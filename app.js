@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var routes = require('index');
-var users = require('users');
+var routes = require('./index.js');
+var users = require('./users.js');
 var Usuario = require('./model/usuario').Usuario;
 var EdicionLog = require('./model/edicionLog').Edicion;
 var Beneficiarios = require('./model/beneficiarios').Beneficiario;
@@ -71,7 +71,7 @@ app.use(cookieParser());
 app.use(session({ secret: 'secreto' }));
 app.use('/', routes);
 app.use('/users', users);
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 80;
 app.listen(port, function() { 
 
     console.log("HOLA COMO ESTAS")
