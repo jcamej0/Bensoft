@@ -20,7 +20,7 @@ var session = require('express-session');
 var bitacora = require('./model/bitacora').Bitacora;
 
 var app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('./PUBLIC'));
 
 
 var uristring =
