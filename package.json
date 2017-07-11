@@ -18,7 +18,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "express-session": "^1.13.0",
-    "mongoose": "^4.10.8",
+    "mongoose": "4.10.8",
     "mongoose-bcrypt": "^1.4.2",
     "morgan": "~1.6.1",
     "nodemon": "^1.9.1",
