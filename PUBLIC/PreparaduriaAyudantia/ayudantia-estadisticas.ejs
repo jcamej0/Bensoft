@@ -1,0 +1,160 @@
+<div ng-controller="ayudantiaEstadisticas">
+<md-toolbar>
+
+ 		<div layout="row">
+      		<h3>
+        		  <div class="btn-group">
+    				<md-button type="button" ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+    					Registrar <span class="caret"></span></md-button>
+    				<ul class="dropdown-menu" role="menu">
+     				 <li><a href="#pya/registrar/preparaduria">Preparaduria</a></li>
+     				 <li><a href="#pya/registrar/ayudantia">Ayudantia</a></li>
+    				</ul>
+  					</div>
+
+        		<div class="btn-group">
+    				<md-button type="button" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+    					Consultar <span class="caret"></span></md-button>
+    				<ul class="dropdown-menu" role="menu">
+     				 <li><a href="#pya/consultar/preparaduria">Preparaduria</a></li>
+     				 <li><a href="#pya/consultar/ayudantia">Ayudantia</a></li>
+    				</ul>
+  					</div>
+        		<div class="btn-group">
+    				<md-button type="button" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+    					Estadísticas <span class="caret"></span></md-button>
+    				<ul class="dropdown-menu" role="menu">
+     				 <li><a href="#pya/estadisticas/preparaduria">Preparaduria</a></li>
+     				 <li><a href="#pya/estadisticas/ayudantia">Ayudantia</a></li>
+    				</ul>
+  					</div>
+
+        		<div class="btn-group">
+    				<md-button type="button" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+    					Reportes <span class="caret"></span></md-button>
+    				<ul class="dropdown-menu" role="menu">
+     				 <li><a href="#pya/reportes/preparaduria">Preparaduria</a></li>
+     				 <li><a href="#pya/reportes/ayudantia">Ayudantia</a></li>
+    				</ul>
+  					</div>
+        
+      		</h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Preparadurias/Ayudantias</h1></div>
+      	</div>
+    </md-toolbar>
+
+    <h1 class="tituloinfo">Estadisticas Ayudantias</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+     
+      <th>INFO</th>
+      <th>TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>Beneficiarios</td>
+      <td>{{totalbeneficiarios}}</td>
+      
+    </tr>
+    <tr>
+      
+      <td>Hombres</td>
+      <td>{{totalbeneficiarioshombres}}</td>
+      
+    </tr>
+    <tr>
+      
+      <td>Mujeres</td>
+      <td>{{totalbeneficiariosmujeres}}</td>
+     
+    </tr>
+    </tbody>
+  <thead>
+
+     
+ 
+ 
+  </thead>
+    <tbody>
+    <tr>
+      
+      <td>Administración</td>
+      <td>{{totalbeneficiarios3}}</td>
+     
+    </tr>
+
+       <tbody>
+    <tr>
+      
+      <td>Contaduria</td>
+      <td>{{totalbeneficiarios11}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Mecanica</td>
+      <td>{{totalbeneficiarios4}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Construccion Civíl</td>
+      <td>{{totalbeneficiarios5}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Instrumentación</td>
+      <td>{{totalbeneficiarios6}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Electricidad</td>
+      <td>{{totalbeneficiarios7}}</td>
+     
+    </tr>
+
+    <tr>
+      
+      <td>Informática</td>
+      <td>{{totalbeneficiarios8}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Química</td>
+      <td>{{totalbeneficiarios9}}</td>
+     
+    </tr>
+
+    <tr>
+      
+      <td>Agroalimentación</td>
+      <td>{{totalbeneficiarios10}}</td>
+     
+    </tr>
+  </tbody>
+</table>
+
+
+
+</div>
+
+</div>

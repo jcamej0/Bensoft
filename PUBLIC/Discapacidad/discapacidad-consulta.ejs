@@ -1,0 +1,119 @@
+<div ng-controller="consultaDiscapacidad">
+  <md-toolbar>
+
+    <div layout="row">
+          <h3>
+            <md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#discapacidad/registro">Registrar</md-button>
+            <md-button class="md-warn md-raised md-hue-2" href="#discapacidad/consultar">Consultar</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#discapacidad/estadisticas" >Estadísticas</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#discapacidad/reportes" >Reportes</md-button>
+        
+          </h3>
+
+          <div flex class="tituloBeneficioOpciones"><h1>Beca Ayuda Discapacidad</h1></div>
+        </div>
+    </md-toolbar>
+
+
+
+
+
+<h1 class="tituloinfo">Consulta Beca Discapacidad</h1>
+
+<div display="row" flex="20" class="has-success">
+<input type="text" ng-model="search" placeholder="Buscar por: Nombre,Cedula,Apellido" class="form-control" > 
+</div>
+  Total beneficiaros {{beneficiarios.length}}
+
+
+<table class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Cedula</th>
+                                    <th>PNF</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="beneficiarios in beneficiarios|filter:search|itemsPerPage:6">
+
+                                      
+                                    <td>{{beneficiarios.nombres}}</td>
+                                    </a>
+                                    <td>{{beneficiarios.apellidos}}</td>
+                                    <td>{{beneficiarios.tipocedula+'-'+beneficiarios.cedula}}</td>
+                                    <td>{{beneficiarios.pnf}}</td>
+
+
+                                    <td style="width:40%;"><md-button class="btn btn-primary" href='#discapacidad/beneficiado/consultar/{{beneficiarios.cedula}}'><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>Consultar</md-button>
+
+                                    <md-button class="btn btn-warning" href='#discapacidad/modificardatos/{{beneficiarios._id}}' ng-hide="nivel != 1 && nivel != 3" ><span class="glyphicon glyphicon-check" aria-hidden="true"></span>Modificar</md-button>
+
+                                   <md-button class="btn btn-success" data-toggle="modal" data-whatever="{{beneficiarios.nombres}}" data-cedula="{{beneficiarios.cedula}}" data-apellido="{{beneficiarios.apellidos}}" data-target="#mensajeEliminar" 
+                                     ng-hide="nivel != 1 && nivel != 3" ><span class="glyphicon glyphicon-cog" aria-hidden="true" ></span> Opciones</md-button>
+                                           
+<script>
+  
+$('#mensajeEliminar').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever');
+  var apellido = button.data('apellido'); 
+  var cedulax = button.data('cedula');
+  var modal = $(this)
+  modal.find('.modal-title').text('Opciones para ' + recipient + ' ' + apellido)
+  modal.find('.modal-body input').val(cedulax).trigger('input');
+
+})
+
+</script>
+  <div class="modal fade"  id="mensajeEliminar" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body" style="text-align: center">
+      <h4>¿Que desear hacer?</h4>
+      <input type="password" ng-hide="true" ng-model="usuario.cedula" >
+      <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" ng-click="expedientar(usuario.cedula)"><span class="glyphicon glyphicon-send" aria-hidden="true"  ></span>Mover a Expedientes</button>
+
+  <button type="button" class="btn btn-default btn-lg"      data-dismiss="modal"    ng-click="eliminar(usuario.cedula)"><span class="glyphicon glyphicon-trash" aria-hidden="true"    data-dismiss="modal"></span>Eliminar registro</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+                           
+                                    </td>
+                                    </tr>
+                
+                                
+
+                            </tbody>
+                        </table> 
+                    </div>
+
+                    <script>
+                    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+                    </script>
+
+
+
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+
+
+    
+
+</div>

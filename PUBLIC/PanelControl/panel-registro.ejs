@@ -1,0 +1,102 @@
+ <div ng-controller="usuarioRegistro" ng-hide="nivel!=3">
+
+ <md-toolbar>
+
+ <div layout="row">
+   <h3>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/registro">Registrar Usuario</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/consultar">Consultar Usuarios</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/bdatos" >Base de datos</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/auditoria" >Auditoria</md-button>
+        
+        
+      </h3>
+
+      <div flex class="tituloBeneficioOpciones"><h1>Panel de Control</h1></div>
+      </div>
+    </md-toolbar>
+
+
+<h1 class="tituloinfo">Registro de usuario</h1>
+
+<form name="form" ng-submit="agregarUsuario()">
+    <div class="registrousuario">
+<label for="nombre">Nombre y apellido</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" ng-model="formulario.nombre" required>
+</div>
+<br>
+<label for="usuario">Nombre de usuario</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="usuario" aria-describedby="basic-addon3" ng-model="formulario.usuario" required>
+</div>
+
+
+<br>
+<label for="usuario">Pregunta secreta</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+   </span>
+  <select class="form-control" ng-model="formulario.pregunta">
+    <option  ng-repeat="pregunta in preguntas" value="{{pregunta}}" >{{pregunta}}</option>
+  </select>
+</div>
+
+<br>
+<label for="usuario">Respuesta secreta</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="usuario" aria-describedby="basic-addon3" ng-model="formulario.respuesta" required>
+</div>
+
+
+<br>
+<label for="contraseña">Contraseña</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+   </span>
+  <input type="password" name="password" class="form-control" id="contraseña" aria-describedby="basic-addon3" ng-model="formulario.contrasena" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})" required>
+</div>
+
+<div class="error-clave" ng-show="form.password.$invalid && !form.password.$pristine">
+  Contraseña debe tener almenos 8 caracteres, minimo una letra mayuscula, un numero y un simbolo.
+</div>
+
+
+
+<label for="tipo">Tipo de usuario</label>
+<br>
+<label class="radio-inline">
+  <input type="radio" required name="inlineRadioOptions" id="inlineRadio1" value="3" ng-model="formulario.tipo"> Administrador
+</label>
+<label class="radio-inline">
+  <input type="radio"  required name="inlineRadioOptions" id="inlineRadio2" value="1" ng-model="formulario.tipo"> Editor
+</label>
+<label class="radio-inline">
+  <input type="radio" required name="inlineRadioOptions" id="inlineRadio3" value="0" ng-model="formulario.tipo"> Consultor
+</label>
+
+<br>
+<br>
+<button type="submit" class="btn btn-primary btn-lg btn-block">Registrar</button>
+</form>
+	</div>
+
+
+
+
+
+
+
+
+</div>

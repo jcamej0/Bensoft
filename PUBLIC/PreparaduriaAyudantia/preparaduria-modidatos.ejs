@@ -1,0 +1,724 @@
+<div ng-controller="modificarPreparaduria" ng-hide="nivel != 1 && nivel != 3">
+
+   <md-toolbar>
+
+    <div layout="row">
+          <h3>
+              <div class="btn-group">
+            <md-button type="button" ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+              Registrar <span class="caret"></span></md-button>
+            <ul class="dropdown-menu" role="menu">
+             <li><a href="#pya/registrar/preparaduria">Preparaduria</a></li>
+             <li><a href="#pya/registrar/ayudantia">Ayudantia</a></li>
+            </ul>
+            </div>
+
+            <div class="btn-group">
+            <md-button type="button" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+              Consultar <span class="caret"></span></md-button>
+            <ul class="dropdown-menu" role="menu">
+             <li><a href="#pya/consultar/preparaduria">Preparaduria</a></li>
+             <li><a href="#pya/consultar/ayudantia">Ayudantia</a></li>
+            </ul>
+            </div>
+            <div class="btn-group">
+            <md-button type="button" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+              Estadísticas <span class="caret"></span></md-button>
+            <ul class="dropdown-menu" role="menu">
+             <li><a href="#pya/estadisticas/preparaduria">Preparaduria</a></li>
+             <li><a href="#pya/estadisticas/ayudantia">Ayudantia</a></li>
+            </ul>
+            </div>
+
+            <div class="btn-group">
+            <md-button type="button" class="md-warn md-raised md-hue-2 dropdown-toggle" data-toggle="dropdown">
+              Reportes <span class="caret"></span></md-button>
+            <ul class="dropdown-menu" role="menu">
+             <li><a href="#pya/reportes/preparaduria">Preparaduria</a></li>
+             <li><a href="#pya/reportes/ayudantia">Ayudantia</a></li>
+            </ul>
+            </div>
+        
+          </h3>
+
+          <div flex class="tituloBeneficioOpciones"><h1>Preparadurias/Ayudantias</h1></div>
+        </div>
+    </md-toolbar>
+
+
+
+
+ 
+
+<md-content flex>
+<div>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#informacion" aria-controls="home" role="tab" data-toggle="tab">
+    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>Informacion</a></li>
+    <li role="presentation"><a href="#estudiosocial" aria-controls="estudiosocial" role="tab" data-toggle="tab"> <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>Estudio Social</a></li>
+    <li role="presentation"><a href="#grupofamiliar" aria-controls="grupofamiliar" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Grupo Familiar</a></li>
+    <li role="presentation"><a href="#recomendaciones" aria-controls="recomendaciones" role="tab" data-toggle="tab">
+    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>Recomendaciones</a></li>
+    <li role="presentation"><a href="#documentos" aria-controls="documentos" role="tab" data-toggle="tab">
+    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>Documentos</a></li>
+    <li role="presentation"><a href="#registrar" aria-controls="registrar" role="tab" data-toggle="tab">
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Registrar</a></li>
+  </ul>
+</div>
+
+
+<form name="form" ng-submit="actualizarBeneficiario()" novalidate>
+<h1 class="tituloinfo">Modificar Estudiante -{{formulario.nombre}}-</h1>
+
+<div class="tab-content">
+
+    <!--Formulario de informacion-->
+    <div role="tabpanel" class="tab-pane active" id="informacion">
+      <div class="registrousuario2">
+        <div layout="column">
+            <div layout="row" >
+              <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.nombre.$invalid && !form.nombre.$pristine ,
+              'has-success' : form.nombre.$valid && !form.nombre.$pristine
+              } ">
+              <label for="nombre">Nombres</label>
+
+              <input type="text" name="nombre" class="form-control"  only-letters-input placeholder="Nombre" ng-model="formulario.nombre" ng-maxlength="30" required>
+              <small class="text-muted">Campo obligatorio(Solo letras).</small>
+              <p ng-show="form.nombre.$invalid && !form.nombre.$pristine" class="help-block">Introduzca un nombre valido</p>
+              </fieldset>
+
+              <div layout="row" flex='5'>
+      
+
+              </div>
+
+              <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.apellido.$invalid && !form.apellido.$pristine ,
+              'has-success' : form.apellido.$valid && !form.apellido.$pristine
+              } ">
+              <label for="apellido">Apellidos</label>
+              <input type="text" name="apellido" class="form-control"  only-letters-input placeholder="apellido" ng-model="formulario.apellido"  ng-maxlength="30" required>
+              <small class="text-muted">Campo obligatorio(Solo letras).</small>
+              <p ng-show="form.apellido.$invalid && !form.apellido.$pristine" class="help-block">Agregue un apellido valido</p>
+              </fieldset>
+
+              <div layout="row" flex='5'>
+      
+
+              </div>
+
+              <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.cedula.$invalid && !form.cedula.$pristine ,
+              'has-success' : form.cedula.$valid && !form.cedula.$pristine
+              } ">
+              <label for="cedula"></label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                <select name="tipocedula" ng-model="formulario.tipocedula">
+                <option  selected value="V" >V</option>
+                <option value="E">E</option>
+              </select></div>
+          
+              <input  ng-disabled="formulario.tipocedula == undefined " type="text" name="cedula" class="form-control" placeholder="Cedula" ng-model="formulario.cedula"  ng-maxlength="10" numbers-only required>
+              </div>
+              <p ng-show="form.cedula.$invalid && !form.cedula.$pristine" class="help-block">Introduzca una cedula valida</p>
+              <small class="text-muted">Campo obligatorio(Solo numeros).</small>
+              </fieldset>
+
+
+              <div layout="row" flex='5'>
+      
+
+             </div>
+
+              <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.codigo.$invalid && !form.codigo.$pristine ,
+              'has-success' : form.codigo.$valid && !form.codigo.$pristine
+              } ">
+            <label for="codigo">Código</label>
+
+            <input type="text" name="codigo" class="form-control" placeholder="Codigo" ng-model="formulario.codigo" ng-maxlength="10" numbers-only required>
+             <p ng-show="form.codigo.$invalid && !form.codigo.$pristine" class="help-block">Introduzca un codigo valido</p>
+
+            <small class="text-muted">Campo obligatorio(Solo numeros).</small>
+            </fieldset>
+            </div>
+
+
+
+            <div layout="row" >
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.pnf.$invalid && !form.pnf.$pristine ,
+            'has-success' : form.pnf.$valid && !form.pnf.$pristine
+            } ">
+            <label for="pnf">PNF</label>
+    
+            <select  name="pnf" class="form-control" ng-model="formulario.pnf"  required>
+         
+            <option  ng-repeat="pnf in PNF" >{{pnf.nombre}}</option>
+            </select>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+            <div layout="row" flex='5'>
+      
+
+            </div>
+
+
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.trayecto.$invalid && !form.trayecto.$pristine ,
+            'has-success' : form.trayecto.$valid && !form.trayecto.$pristine
+            } ">
+            <label for="trayecto">Trayecto</label>
+    
+            <select name="trayecto" class="form-control" ng-model="formulario.trayecto" required>
+         
+            <option ng-repeat="trayectos in trayecto">{{trayectos.nombre}}</option>
+            </select>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+            <div layout="row" flex='5'>
+      
+
+            </div>
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.trimestre.$invalid && !form.trimestre.$pristine ,
+            'has-success' : form.trimestre.$valid && !form.trimestre.$pristine
+            } ">
+            <label for="trimestre">Trimestre</label>
+    
+            <select name="trimestre" class="form-control" ng-model="formulario.trimestre" required>
+         
+           <option ng-repeat="trimestres in trimestre">{{trimestres.trimestre}}</option>
+            </select>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+
+            <div layout="row" flex='5'>
+      
+
+            </div>
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.sexo.$invalid && !form.sexo.$pristine ,
+            'has-success' : form.sexo.$valid && !form.sexo.$pristine
+            } " >
+            <label for="sexo">Sexo</label>
+    
+            <select name="sexo" class="form-control" ng-model="formulario.sexo" required>
+         
+            <option ng-repeat="sexos in sexo">{{sexos.sexo}}</option>
+            </select>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+            </div>
+
+
+
+
+            <div layout="row" >
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.estado.$invalid && !form.estado.$pristine ,
+            'has-success' : form.estado.$valid && !form.estado.$pristine
+            } ">
+            <label for="estado">Estado Procedencia</label>
+    
+            <select  name="estado" class="form-control" ng-model="formulario.estado"  ng-change="cambiarMunicipio(formulario.estado)" required>
+         
+            <option    ng-repeat="estados in estado"  >{{estados.estado}}</option>
+            </select>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+            <div layout="row" flex='5'>
+      
+
+            </div>
+
+
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.municipio.$invalid && !form.municipio.$pristine ,
+            'has-success' : form.municipio.$valid && !form.municipio.$pristine
+            } ">
+            <label for="municipio">Municipio</label>
+    
+            <select name="municipio" class="form-control" ng-model="formulario.municipio" required>
+         
+            <option ng-repeat="municipios in municipio">{{municipios.municipio}}</option>
+            </select>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+            <div layout="row" flex='5'>
+      
+
+            </div>
+
+         
+           <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.fecnac.$invalid && !form.fecnac.$pristine ,
+            'has-success' : !form.fecnac.$pristine
+            } ">
+           <label for="fecnac">Fecha de Nacimiento</label>
+    
+            <input name="fecnac" type="date" class="form-control" ng-model="formulario.fecnac">
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+
+            <div layout="row" flex='5'>
+      
+
+           </div>
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.fecnac.$invalid && !form.fecnac.$pristine ,
+            'has-success' : form.fecnac.$valid && !form.fecnac.$pristine
+            } ">
+           <label for="fecinicio">Fecha de Inicio</label>
+    
+            <input name="fecinicio" type="date" class="form-control" ng-model="formulario.fecinicio">
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+
+            <div layout="row" flex='5'>
+      
+
+           </div>
+
+           
+         </div>
+
+
+
+            <div layout="row">
+              
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.fecnac.$invalid && !form.fecnac.$pristine ,
+            'has-success' : form.fecnac.$valid && !form.fecnac.$pristine
+            } ">
+           <label for="asignado">Departamento Asignado</label>
+        
+            <input name="asignado" type="text" class="form-control" ng-model="formulario.depasignado" required>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+
+
+            <div layout="row" flex='5'>
+      
+
+           </div>
+
+            <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.direccion.$invalid && !form.direccion.$pristine ,
+            'has-success' : form.direccion.$valid && !form.direccion.$pristine
+            } " >
+            <label for="direccion">Dirección Residencial</label>
+    
+            <input ng-maxlength="200" name="direccion" type="text" class="form-control" ng-model="formulario.residencia" required>
+            <small class="text-muted">Campo obligatorio.</small>
+            </fieldset>
+            
+
+         <div layout="row" flex='5'>
+      
+
+              </div>
+
+<fieldset class="form-group" flex='20'>
+              <label for="exampleInputEmail1">Teléfono</label>
+              <input type="text" class="form-control" placeholder="Telefono" ng-model="formulario.telefono" phone-number>
+    
+              </fieldset>
+
+              <div layout="row" flex='5'>
+      
+
+              </div>
+
+              <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.correo.$invalid && !form.correo.$pristine ,
+              'has-success' : form.correo.$valid && !form.correo.$pristine
+              } ">
+              <label for="exampleInputEmail1">Correo</label>
+              <input type="email" name="correo" class="form-control" placeholder="Correo" ng-model="formulario.correo">
+              <p ng-show="form.correo.$invalid && !form.correo.$pristine" class="help-block">Introduzca un correo valido.</p>
+              </fieldset>
+       
+</div>
+              
+     <div layout="row" >
+
+
+
+              <fieldset class="form-group" flex='20'>
+              <label for="exampleInputEmail1">Twitter</label>
+              <input type="text" class="form-control" placeholder="Nombre" ng-model="formulario.twitter">
+    
+              </fieldset>
+
+
+              <div layout="row" flex='5'>
+      
+
+              </div>
+
+              <fieldset class="form-group" flex='20'>
+              <label for="exampleInputEmail1">Facebook</label>
+              <input type="text" class="form-control" placeholder="Nombre" ng-model="formulario.facebook">
+    
+              </fieldset>
+
+
+              </div>
+
+
+
+     
+          
+
+        </div>
+      </div>
+    </div>
+
+    <!--Formulario de Estudio Social-->
+    <div role="tabpanel" class="tab-pane" id="estudiosocial">
+      <h1 class="tituloinfo">Estudio Social</h1> 
+      <hr>
+
+      <div class="registrousuario2">
+  
+      
+  
+      <div layout="row" >
+
+
+      <fieldset class="form-group" flex='20'>
+      <label for="civil" >Estado Civil: </label>
+    
+      <select name="civil" class="form-control" ng-model="formulario.civil">
+         
+      <option ng-repeat="civil in civil">{{civil.civil}}</option>
+      </select>
+      </fieldset>
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+      <fieldset class="form-group" flex='20'>
+      <label for="residencia">Residencia mientras estudia: </label>
+    
+      <select name="residencia" class="form-control" ng-model="formulario.residencia2">
+         
+      <option ng-repeat="residencias in residencia">{{residencias.tipo}}</option>
+      </select>
+      </fieldset>
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+  
+      <fieldset class="form-group" flex='20' >
+      <label for="paga">¿Paga en esta vivienda?</label>
+    
+      <select name="paga" class="form-control"  ng-model="formulario.paga">
+         
+      <option ng-repeat="opciones in opcion">{{opciones.opcion}}</option>
+      </select>
+      </fieldset>
+
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+      <fieldset class="form-group" flex='20' >
+      <label for="monto">Monto en Bs.</label>
+      <div class="input-group">
+                <div class="input-group-addon">
+                  Bs.
+                  </div>
+      <input type="text" ng-maxlength="8"  numbers-only name="monto"  class="form-control" placeholder="Monto" ng-model="formulario.monto">
+      </div>
+      <p ng-show="form.Ingreso.$invalid" class="help-block">Cifra muy larga.</p>
+      </fieldset>
+      </div>
+
+
+
+
+
+
+
+      <div layout="row" >
+
+
+      <fieldset class="form-group" flex='20'>
+      <label for="viaja">¿Viaja diariamente?</label>
+    
+      <select name="viaja" class="form-control" ng-model="formulario.viaja">
+         <option ng-repeat="opciones in opcion">{{opciones.opcion}}</option>
+      </select>
+      </fieldset>
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+      <fieldset class="form-group" flex='20' >
+      <label for="telefono">Teléfono local: </label>
+      <input type="text"  name="telefono" class="form-control" placeholder="Telefono Local" ng-model="formulario.tlocal" phone-number>
+         <p ng-show="form.telefono.$invalid" class="help-block">Introduzca un numero valido</p>
+      </fieldset>
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+  
+      <fieldset class="form-group" flex='20'>
+      <label for="telefonopro">Teléfono procedencia: </label>
+      <input type="text"  name="telefonopro" class="form-control" placeholder="Telefono de Procedencia" ng-model="formulario.tprocedencia" phone-number>
+         <p ng-show="form.tel.$invalid" class="help-block">Introduzca un numero valido</p>
+      </fieldset>
+
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+      <fieldset class="form-group" flex='20' >
+      <label for="trabaja">¿Trabaja?</label>
+    
+      <select name="trabaja" class="form-control" ng-model="formulario.trabaja">
+         <option ng-repeat="opciones in opcion">{{opciones.opcion}}</option>
+      </select>
+      </fieldset>
+      </div>
+
+
+
+
+      <div layout="row" >
+
+
+      <fieldset  flex='20' >
+      <label for="donde">Direccion trabajo</label>
+      <input  ng-maxlength="40" type="text" name="donde" class="form-control"  placeholder="Direccion Trabajo" ng-model="formulario.direcciontrabajo">
+      <p ng-show="form.donde.$invalid" class="help-block">Direccion muy larga</p>
+      </fieldset >
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+      <fieldset  class="form-group" flex='20' >
+      <label for="ingreso">Ingreso en Bolivares: </label>
+        <div class="input-group">
+                <div class="input-group-addon">
+                  Bs.
+                  </div>
+      <input ng-maxlength="8"type="text" name="Ingreso" numbers-only class="form-control"    placeholder="Ingreso" ng-model="formulario.ingreso" numbers-only>
+      
+      </div>
+      <p ng-show="form.Ingreso.$invalid" class="help-block">Cifra muy larga.</p>
+      </fieldset >
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+  
+      <fieldset  class="form-group" flex='20'>
+      <label for="aportes" >¿De quien recibe aportes? </label>
+      <input ng-maxlength="30" type="text" name="aportes" class="form-control" placeholder="De quien recibe aportes" ng-model="formulario.aportes">
+      <p ng-show="form.aportes.$invalid" class="help-block">Informacion muy larga.</p>
+      </fieldset >
+
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+
+      <fieldset  class="form-group" flex='20' >
+      <label for="asignan">¿Cuanto le asignan? </label>
+       <div class="input-group">
+                <div class="input-group-addon">
+                  Bs.
+                  </div>
+      <input ng-maxlength="30" type="text" name="asignan" numbers-only class="form-control"   placeholder="Cuanto le asignan" ng-model="formulario.asignan"  >
+      </div>
+      <p ng-show="form.asignan.$invalid && !form.asignan.$pristine" class="help-block">Cifra muy larga.</p>
+      </fieldset>
+      </div>
+
+      <div layout="row" flex='5'>
+      
+
+      </div>
+      <fieldset class="form-group" >
+      <label for="dfamiliar">Direccion Familiar</label>
+      <textarea  ng-maxlength="160" name="dfamiliar" class="form-control" id="exampleTextarea" ng-model="formulario.direccionfamiliar"></textarea>
+      <p ng-show="form.dfamiliar.$invalid" class="help-block">Direccion muy larga.</p>
+      </fieldset>
+      </div>
+    </div>
+
+    <!--Formulario de Grupo Familiar-->
+    <div role="tabpanel" class="tab-pane" id="grupofamiliar">
+
+
+      <h1 class="tituloinfo">Grupo Familiar</h1> 
+      <hr>
+
+      <table class="table table-bordered">
+        <tr>
+   
+          <th>Apellidos y Nombre</th>
+          <th>Parentesco</th>
+          <th>Edad</th>
+          <th>Instruccion</th>
+          <th>Ocupación</th>
+          <th>Ingreso en Bsf</th>
+        </tr>
+
+
+        <tr>
+
+          <td><input  type="text" ng-maxlength="25" name="a1" only-letters-input  ng-model="formulario.apellidonombre1"></td>
+          <td><input  name="a2" type="text" ng-maxlength="25" only-letters-input ng-model="formulario.parentesco1"></td>
+          <td><input   name="a3" type="text" numbers-only ng-model="formulario.edad1"></td>
+          <td><input  name="a4" type="text" ng-maxlength="25" only-letters-input ng-model="formulario.instruccion1"></td>
+          <td><input  name="a5"type="text" ng-maxlength="25" only-letters-input ng-model="formulario.ocupacion1"></td>
+          <td><input  type="text"  ng-model="formulario.ingreso1"></td>
+        </tr>
+
+        <tr>
+   
+        <td><input type="text"  ng-maxlength="25"  name="b1"only-letters-input ng-model="formulario.apellidonombre2"></td>
+          <td><input   name="b2" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco2"></td>
+          <td><input   name="b3"type="text" numbers-only ng-model="formulario.edad2"></td>
+          <td><input   name="b4"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion2"></td>
+          <td><input   name="b5"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion2"></td>
+          <td><input   name="b6"type="text"  ng-model="formulario.ingreso2"></td>
+        </tr>
+
+        <tr>
+   
+       <td><input type="text"  ng-maxlength="25"  name="c1"only-letters-input ng-model="formulario.apellidonombre3"></td>
+          <td><input  name="c2" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco3"></td>
+          <td><input  name="c3"type="text" numbers-only ng-model="formulario.edad3"></td>
+          <td><input  name="c4"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion3"></td>
+          <td><input  name="c5"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion3"></td>
+          <td><input  name="c6"type="text"  ng-model="formulario.ingreso3"></td>
+        </tr>
+
+        <tr>
+   
+        <td><input type="text"  ng-maxlength="25"  name="d1" only-letters-input ng-model="formulario.apellidonombre4"></td>
+          <td><input  name="d2"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco4"></td>
+          <td><input  name="d3"type="text" numbers-only ng-model="formulario.edad4"></td>
+          <td><input  name="d4" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion4"></td>
+          <td><input  name="d5" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion4"></td>
+          <td><input  name="d6" type="text"  ng-model="formulario.ingreso4"></td>
+        </tr>
+
+        <tr>
+   
+        <td><input type="text"  ng-maxlength="25"  name="e1"only-letters-input ng-model="formulario.apellidonombre5"></td>
+          <td><input  name="e2" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco5"></td>
+          <td><input  name="e3"type="text" numbers-only ng-model="formulario.edad5"></td>
+          <td><input  name="e4"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion5"></td>
+          <td><input  name="e5"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion5"></td>
+          <td><input  name="e6"type="text"  ng-model="formulario.ingreso5"></td>
+        </tr>
+
+        <tr>
+   
+        <td><input type="text"  ng-maxlength="25"  name="f1"only-letters-input ng-model="formulario.apellidonombre6"></td>
+          <td><input  name="f2" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco6"></td>
+          <td><input  name="f3"type="text" numbers-only ng-model="formulario.edad6"></td>
+          <td><input  name="f4"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion6"></td>
+          <td><input  name="f5"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion6"></td>
+          <td><input  name="f6"type="text"  ng-model="formulario.ingreso6"></td>
+        </tr>
+
+        <tr>
+   
+        <td><input type="text"  ng-maxlength="25"  name="g1"only-letters-input ng-model="formulario.apellidonombre7"></td>
+          <td><input  name="g2" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco7"></td>
+          <td><input  name="g3"type="text" numbers-only ng-model="formulario.edad7"></td>
+          <td><input  name="g4"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion7"></td>
+          <td><input  name="g5"type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion7"></td>
+          <td><input  name="g6"type="text"  ng-model="formulario.ingreso7"></td>
+        </tr>
+
+        <tr>
+   
+        <td><input type="text"   ng-maxlength="25" name="h1" only-letters-input ng-model="formulario.apellidonombre8"></td>
+          <td><input type="text" ng-disabled="form.h1.$pristine " name="h2" ng-maxlength="25"  only-letters-input ng-model="formulario.parentesco8"></td>
+          <td><input  name="h3" type="text" numbers-only ng-model="formulario.edad8"></td>
+          <td><input  name="h4" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.instruccion8"></td>
+          <td><input  name="h5" type="text" ng-maxlength="25"  only-letters-input ng-model="formulario.ocupacion8"></td>
+          <td><input  name="h6" type="text"  ng-model="formulario.ingreso8"></td>
+        </tr>
+
+
+      </table>
+    </div>
+    
+
+    <!--Formulario de Informacion Extra-->
+    <div role="tabpanel" class="tab-pane" id="recomendaciones">
+
+      <h1 class="tituloinfo">Conclusiones/Recomendaciones</h1> 
+      <hr>
+      <textarea  class="form-control" rows="5" placeholder="Recomendaciones" ng-model="formulario.recomendaciones"></textarea>
+    </div>
+
+  <!--Formulario de documentos consignados-->
+    <div role="tabpanel" class="tab-pane" id="documentos">
+      <h1 class="tituloinfo">Documentos consignados</h1> 
+      <hr>
+      <div class="documentos"> 
+      <input type="checkbox" ng-model="formulario.historial"> Historial
+      <br>
+      <input type="checkbox" ng-model="formulario.horario"> Horario
+      <br>
+      <input type="checkbox" ng-model="formulario.foto"> Foto
+      <br>
+      <input type="checkbox" ng-model="formulario.copiacedula" > Copia de Cedula
+
+      <br>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="registrar">
+      <h1 class="tituloinfo">Actualizar</h1> 
+      <hr>
+        <div layout="row" >
+  <button  style="transform: translate(70%)" type="submit" class="btn btn-success" ng-hide="nivel != 1 && nivel != 3"   flex="40">Actualizar</button>
+  </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+  </div>
+</form>
+</md-content>
+
+
+</div>

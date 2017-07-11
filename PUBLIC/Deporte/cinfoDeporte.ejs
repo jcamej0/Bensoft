@@ -1,0 +1,407 @@
+<div ng-controller="consultaControl">
+	<md-toolbar>
+
+ 		<div layout="row">
+      		<h3>
+        		<md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#deporte/registro">Registrar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2" href="#deporte/consultar">Consultar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#deporte/estadisticas" >Estadísticas</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#deporte/reportes" >Reportes</md-button>
+        
+      		</h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Beca Deporte</h1></div>
+      	</div>
+    </md-toolbar>
+
+
+	<md-content>	
+
+	<h1 class="tituloinfo">Informacion Beneficiado</h1>
+	<hr>
+	<h4 style="margin-left:40px">Ultima modificacion por: {{infobeneficiado[0].modificadoPor}}</h4>
+
+	<div class="infoBeneficiado">
+	<div>
+  		<ul class="nav nav-tabs" role="tablist">
+    		<li role="presentation" class="active"><a href="#informacion" aria-controls="home" role="tab" data-toggle="tab">Informacion</a></li>
+    		<li role="presentation"> <a href="#estudiosocial" aria-controls="estudiosocial" role="tab" data-toggle="tab">Estudio Social</a></li>
+    		<li role="presentation"><a href="#grupofamiliar" aria-controls="grupofamiliar" role="tab" data-toggle="tab">Grupo Familiar</a></li>
+    		<li role="presentation"><a href="#recomendaciones" aria-controls="recomendaciones" role="tab" data-toggle="tab">Recomendaciones</a></li>
+    		<li role="presentation"><a href="#documentos" aria-controls="documentos" role="tab" data-toggle="tab">Documentos</a></li>
+    		<li role="presentation"><a href="#opciones" aria-controls="opciones" role="tab" data-toggle="tab">Opciones</a></li>
+  		</ul>
+	</div>
+	
+	<div class="tab-content">
+
+	<div role="tabpanel" class="tab-pane active" id="informacion">
+
+		<div class="izquierda">
+			<table class="table table-striped">
+			<tr>
+			<td><p><b style="color:red">Nombres:</b> </p></td>
+			<td>{{infobeneficiado[0].nombres}}</td>
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Apellidos:</b></p></td>
+		 	<td>{{infobeneficiado[0].apellidos}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Cedula:</b></p></td>
+
+			<td>{{infobeneficiado[0].tipocedula+'-'+infobeneficiado[0].cedula}}</td>
+
+			</tr>
+
+
+			<tr>
+			<td><p><b style="color:red">Codigo:</b></p></td>
+
+			<td>{{infobeneficiado[0].codigo}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">PNF:</b></p></td>
+
+			<td>{{infobeneficiado[0].pnf}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Trayecto:</b></p></td>
+
+			<td>{{infobeneficiado[0].trayecto}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Trimestre:</b></p></td>
+
+			<td>{{infobeneficiado[0].trimestre}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Sexo:</b></p></td>
+
+			<td>{{infobeneficiado[0].sexo}}</td>
+
+			</tr>
+
+			<td><p><b style="color:red">Agregado por:</b></p></td>
+
+			<td>{{infobeneficiado[0].persona}}</td>
+
+			</tr>
+
+			</table>
+		</div>
+
+
+		<div class=derecha>
+			<table class="table table-striped">
+			<tr>
+			<td><p><b style="color:red">Estado:</b> </p></td>
+			<td>{{infobeneficiado[0].estado}}</td>
+
+			</tr>
+			<tr>
+			<td><p><b style="color:red">Municipio</b></p></td>
+		 <td>{{infobeneficiado[0].municipio}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Fecha de nacimiento:</b></p></td>
+
+			<td>{{infobeneficiado[0].fecnac | date:'dd-MM-yyyy' }}</td>
+
+			</tr>
+
+
+			<tr>
+			<td><p><b style="color:red">Correo</b></p></td>
+
+			<td>{{infobeneficiado[0].correo}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Facebook</b></p></td>
+
+			<td>{{infobeneficiado[0].facebook}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Twitter</b></p></td>
+
+			<td>{{infobeneficiado[0].twitter}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Telefono</b></p></td>
+
+			<td>{{infobeneficiado[0].telefono}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Residencia</b></p></td>
+
+			<td>{{infobeneficiado[0].residencia}}</td>
+
+			</tr>
+			<td><p><b style="color:red">Ultima modificacion:</b></p></td>
+
+			<td>{{infobeneficiado[0].ultimaModificacion | date:'dd-MM-yyyy'}}</td>
+
+			</tr>
+
+			</table>
+		</div>
+	</div>
+
+	<div role="tabpanel" class="tab-pane" id="estudiosocial">
+		<table class="table table-striped">
+			<tr>
+			<td><p><b style="color:red">Estado civil</b> </p></td>
+			<td>{{infobeneficiado[0].civil}}</td>
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Residencia mientras estudia</b></p></td>
+		 	<td>{{infobeneficiado[0].residencia2}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">¿Paga esta vivienda? </b></p></td>
+
+			<td>{{infobeneficiado[0].paga}}</td>
+
+			</tr>
+
+
+			<tr>
+			<td><p><b style="color:red">Monto:</b></p></td>
+
+			<td>{{"Bs."+infobeneficiado[0].monto}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">¿Viaja diaramente?:</b></p></td>
+
+			<td>{{infobeneficiado[0].viaja}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Telefono local:</b></p></td>
+
+			<td>{{infobeneficiado[0].tlocal}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Telefono de procedencia:</b></p></td>
+
+			<td>{{infobeneficiado[0].tprocedencia}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">¿Trabaja?:</b></p></td>
+
+			<td>{{infobeneficiado[0].trabaja}}</td>
+
+			</tr>
+
+
+			<tr>
+			<td><p><b style="color:red">Direccion del trabajo:</b></p></td>
+
+			<td>{{infobeneficiado[0].direcciontrabajo}}</td>
+
+			</tr>
+
+			<tr>
+			<td><p><b style="color:red">Ingreso:</b></p></td>
+
+			<td>{{"Bs."+infobeneficiado[0].ingreso}}</td>
+
+			</tr>
+
+
+			<tr>
+			<td><p><b style="color:red">¿De quien recibe aportes?:</b></p></td>
+
+			<td>{{infobeneficiado[0].aportes}}</td>
+
+			</tr>
+
+
+			<tr>
+			<td><p><b style="color:red">¿Cuanto le asignan?:</b></p></td>
+
+			<td>{{"Bs."+infobeneficiado[0].asignan}}</td>
+
+			</tr>
+		
+
+			<tr>
+			<td><p><b style="color:red">Direccion familiar: </b></p></td>
+
+			<td>{{infobeneficiado[0].direccionfamiliar}}</td>
+
+			</tr>
+		</table>
+	</div>
+
+
+	<div role="tabpanel" class="tab-pane" id="grupofamiliar">
+
+		<table class="table table-bordered">
+        <tr>
+   
+          <th>Apellidos y Nombre</th>
+          <th>Parentesco</th>
+          <th>Edad</th>
+          <th>Instruccion</th>
+          <th>Ocupación</th>
+          <th>Ingreso</th>
+        </tr>
+
+
+        <tr>
+   
+          <td>{{infobeneficiado[0].apellidonombre1}}</td>
+          <td>{{infobeneficiado[0].parentesco1}}</td>
+          <td>{{infobeneficiado[0].edad1}}</td>
+          <td>{{infobeneficiado[0].instruccion1}}</td>
+          <td>{{infobeneficiado[0].ocupacion1}}</td>
+          <td>{{infobeneficiado[0].ingreso1}}</td>
+        </tr>
+
+        <tr>
+   
+          <td>{{infobeneficiado[0].apellidonombre2}}</td>
+          <td>{{infobeneficiado[0].parentesco2}}</td>
+          <td>{{infobeneficiado[0].edad2}}</td>
+          <td>{{infobeneficiado[0].instruccion2}}</td>
+          <td>{{infobeneficiado[0].ocupacion2}}</td>
+          <td>{{infobeneficiado[0].ingreso2}}</td>
+        </tr>
+
+        <tr>
+   
+        <td>{{infobeneficiado[0].apellidonombre3}}</td>
+          <td>{{infobeneficiado[0].parentesco3}}</td>
+          <td>{{infobeneficiado[0].edad3}}</td>
+          <td>{{infobeneficiado[0].instruccion3}}</td>
+          <td>{{infobeneficiado[0].ocupacion3}}</td>
+          <td>{{infobeneficiado[0].ingreso3}}</td>
+        </tr>
+
+        <tr>
+   
+        <td>{{infobeneficiado[0].apellidonombre4}}</td>
+          <td>{{infobeneficiado[0].parentesco4}}</td>
+          <td>{{infobeneficiado[0].edad4}}</td>
+          <td>{{infobeneficiado[0].instruccion4}}</td>
+          <td>{{infobeneficiado[0].ocupacion4}}</td>
+          <td>{{infobeneficiado[0].ingreso4}}</td>
+        </tr>
+
+        <tr>
+   
+        <td>{{infobeneficiado[0].apellidonombre5}}</td>
+          <td>{{infobeneficiado[0].parentesco5}}</td>
+          <td>{{infobeneficiado[0].edad5}}</td>
+          <td>{{infobeneficiado[0].instruccion5}}</td>
+          <td>{{infobeneficiado[0].ocupacion5}}</td>
+          <td>{{infobeneficiado[0].ingreso5}}</td>
+        </tr>
+
+        <tr>
+   
+        <td>{{infobeneficiado[0].apellidonombre6}}</td>
+          <td>{{infobeneficiado[0].parentesco6}}</td>
+          <td>{{infobeneficiado[0].edad6}}</td>
+          <td>{{infobeneficiado[0].instruccion6}}</td>
+          <td>{{infobeneficiado[0].ocupacion6}}</td>
+          <td>{{infobeneficiado[0].ingreso6}}</td>
+        </tr>
+
+        <tr>
+   
+        <td>{{infobeneficiado[0].apellidonombre7}}</td>
+          <td>{{infobeneficiado[0].parentesco7}}</td>
+          <td>{{infobeneficiado[0].edad7}}</td>
+          <td>{{infobeneficiado[0].instruccion7}}</td>
+          <td>{{infobeneficiado[0].ocupacion7}}</td>
+          <td>{{infobeneficiado[0].ingreso7}}</td>
+        </tr>
+
+        <tr>
+   
+        <td>{{infobeneficiado[0].apellidonombre8}}</td>
+          <td>{{infobeneficiado[0].parentesco8}}</td>
+          <td>{{infobeneficiado[0].edad8}}</td>
+          <td>{{infobeneficiado[0].instruccion8}}</td>
+          <td>{{infobeneficiado[0].ocupacion8}}</td>
+          <td>{{infobeneficiado[0].ingreso8}}</td>
+        </tr>
+
+
+      </table>
+
+	</div>
+	
+	
+
+	<div role="tabpanel" class="tab-pane" id="recomendaciones">
+		<p>{{infobeneficiado[0].recomendaciones}}</p>
+	</div>
+
+
+	<div role="tabpanel" class="tab-pane" id="documentos">
+
+	
+	<div class="documentos"> 
+	<h2>Documentos consignados</h2>
+	<hr>
+	<input type="checkbox" ng-model="infobeneficiado[0].historial" disabled> Historial</input>
+	<br>
+	<input type="checkbox" ng-model="infobeneficiado[0].horario" disabled> Horario</input>
+	<br>
+	<input type="checkbox" ng-model="infobeneficiado[0].foto" disabled> Foto</input>
+	<br>
+	<input type="checkbox" ng-model="infobeneficiado[0].copiacedula" disabled> Copia de cedula</input>
+
+	</div>
+	</div>
+	<div role="tabpanel" class="tab-pane" id="opciones">
+	
+	<div class="center">
+	<h2>¿Que desea hacer?</h2>
+	<hr>
+	<button type="button" class="btn btn-primary btn-lg"  ng-hide="nivel != 1 && nivel != 3"  ng-click="expedientar()"><span class="glyphicon glyphicon-send" aria-hidden="true" ></span>Mover a Expedientes</button>
+
+	<button type="button" class="btn btn-default btn-lg"  ng-hide="nivel != 1 && nivel != 3"  ng-click="eliminar()"><span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>Eliminar registro</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	</md-content>
+</div>
+
+

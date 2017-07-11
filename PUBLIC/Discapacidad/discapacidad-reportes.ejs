@@ -1,0 +1,27 @@
+<div ng-controller="discapacidadReporte" >
+
+	<md-toolbar>
+
+ 		<div layout="row">
+      		<h3>
+        		<md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#discapacidad/registro">Registrar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2" href="#discapacidad/consultar">Consultar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#discapacidad/estadisticas" >Estadísticas</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#discapacidad/reportes" >Reportes</md-button>
+        
+      		</h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Beca Discapacidad</h1></div>
+      	</div>
+    </md-toolbar>
+
+<h1 class="tituloinfo">Reportes Beca Discapacidad</h1>
+<hr>
+
+<div class="tituloinfo">
+	<button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+	<button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+	
+</div>

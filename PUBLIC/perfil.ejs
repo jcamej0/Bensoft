@@ -1,0 +1,73 @@
+ <div ng-controller="usuarioModificacion">
+
+ <md-toolbar>
+
+ <div layout="row">
+      <div flex class="tituloBeneficioOpciones"><h1>Cambio de información personal</h1></div>
+      </div>
+    </md-toolbar>
+
+
+<h1 class="tituloinfo">Información de acceso</h1>
+
+<form name="form">
+    <div class="registrousuario">
+<br>
+<label for="usuario">Pregunta secreta</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <select required class="form-control" ng-model="formulario.pregunta">
+    <option  ng-repeat="pregunta in preguntas" value="{{pregunta}}" >{{pregunta}}</option>
+  </select>
+</div>
+
+<br>
+<label for="usuario">Respuesta secreta</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input  required type="text" class="form-control" id="usuario" aria-describedby="basic-addon3" ng-model="formulario.respuesta" required>
+</div>
+
+
+<br>
+<label for="password">Contraseña</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+   </span>
+  <input type="password" name="password" class="form-control" id="password" aria-describedby="basic-addon3" ng-model="formulario.contrasena" pattern="(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" required>
+</div>
+      <div class="form-group">
+        <label>Password Strength</label>
+        <password-strength ng-model="credentials.password"></password-strength>
+      </div>
+ 
+      <div class="alert alert-error" ng-show="form.password.$error.passwordPattern">The password does not meet requirements!</div>
+<div class="error-clave" ng-show="form.password.$invalid && !form.password.$pristine">
+  Contraseña debe tener almenos 8 caracteres, una mayuscula, una minuscula, un simbolo y un numero.
+</div>
+
+
+<br>
+<br>
+<button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="actualizar()">Registrar</button>
+</form>
+
+<div class="mensajePrimeraVez">
+<span>Estás viendo esta pantalla porque es tu primer acceso al sistema<br>
+Para poder hacer uso del mismo tienes que cambiar tu información de seguridad primero.
+</span>
+</div>
+
+
+
+
+
+
+
+</div>  
+</div>

@@ -1,0 +1,152 @@
+<div ng-controller="academicaestadisticas">
+<div flex>
+  <md-toolbar>
+
+    <div layout="row">
+          <h3>
+            <md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#academica/registro">Registrar</md-button>
+            <md-button class="md-warn md-raised md-hue-2" href="#academica/consultar">Consultar</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#academica/estadisticas" >Estadísticas</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#academica/reportes" >Reportes</md-button>
+        
+          </h3>
+
+          <div flex class="tituloBeneficioOpciones"><h1>Beca Academica</h1></div>
+        </div>
+    </md-toolbar>
+</div>
+
+
+
+	
+
+<h1 class="tituloinfo">Estadisticas Beneficiados</h1>
+
+
+<table class="table table-condensed table-striped">
+  <thead>
+    <tr>
+     
+      <th>INFO</th>
+      <th>TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td>Beneficiarios</td>
+      <td>{{totalbeneficiarios}}</td>
+      
+    </tr>
+    <tr>
+      
+      <td>Hombres</td>
+      <td>{{totalbeneficiarioshombres}}</td>
+      
+    </tr>
+    <tr>
+      
+      <td>Mujeres</td>
+      <td>{{totalbeneficiariosmujeres}}</td>
+     
+    </tr>
+    <tr>
+    </tr>
+
+
+    </tbody>
+ 
+
+    <tbody>
+    <tr>
+      
+      <td>Administración</td>
+      <td>{{totalbeneficiarios3}}</td>
+     
+    </tr>
+
+       <tbody>
+
+
+           <tr>
+      
+      <td>Agroalimentación</td>
+      <td>{{totalbeneficiarios10}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Contaduría</td>
+      <td>{{totalbeneficiarios11}}</td>
+     
+    </tr>
+
+
+
+       <tr>
+      
+      <td>Construcción Civíl</td>
+      <td>{{totalbeneficiarios5}}</td>
+     
+    </tr>
+      
+
+          <tr>
+      
+      <td>Electricidad</td>
+      <td>{{totalbeneficiarios7}}</td>
+     
+    </tr>
+
+
+        <tr>
+      
+      <td>Química</td>
+      <td>{{totalbeneficiarios9}}</td>
+     
+    </tr>
+
+
+
+
+ 
+
+
+    <tr>
+      
+      <td>Instrumentación</td>
+      <td>{{totalbeneficiarios6}}</td>
+     
+    </tr>
+
+
+
+
+    <tr>
+      
+      <td>Informática</td>
+      <td>{{totalbeneficiarios8}}</td>
+     
+    </tr>
+
+
+    <tr>
+      
+      <td>Mecánica</td>
+      <td>{{totalbeneficiarios4}}</td>
+     
+    </tr>
+
+
+
+
+  </tbody>
+</table>
+
+
+
+</div>
+
+</div>

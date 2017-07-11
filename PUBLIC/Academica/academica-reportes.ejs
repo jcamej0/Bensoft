@@ -1,0 +1,27 @@
+<div ng-controller="academicaReporte">
+
+	<md-toolbar>
+
+ 		<div layout="row">
+      		<h3>
+        		<md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#academica/registro">Registrar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2" href="#academica/consultar">Consultar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#academica/estadisticas" >Estadísticas</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#academica/reportes" >Reportes</md-button>
+        
+      		</h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Beca Academica</h1></div>
+      	</div>
+    </md-toolbar>
+
+<h1 class="tituloinfo">Reportes y planillas Beca Academica</h1>
+<hr>
+
+<div class="tituloinfo">
+	<button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+	<button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+	
+</div>

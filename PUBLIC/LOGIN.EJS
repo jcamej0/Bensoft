@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="logueo">
+  <head>
+    <link rel="stylesheet" href="/javascripts/angular-material/angular-material.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <script src="/javascripts/jquery.min.js"></script>
+  </head>
+<body ng-controller="login"  class="ng-cloak">
+
+<md-toolbar>
+<div layout="row" class="cabezera" >
+<h1>Sistema de Gestión de Area Estudiantil</h1>
+<div flex>
+<img src="/images/logodepartamento.png" alt="" height="100" width="160" class="logos">
+<img src="/images/logoinstitucion.png" alt="" height="100" width="100" class="logos">
+</div>    
+</div> 
+
+   </md-toolbar>
+
+
+<div class="formlogin" ng-cloak class="ng-cloak">
+
+
+<h1>ACCESO</h1>
+
+
+
+
+<form name="form" ng-submit="xxx()">
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="nombre"  required aria-describedby="basic-addon3" ng-model="usuario" placeholder="nombre de usuario">
+</div>
+       
+
+       
+  <br>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+   </span>
+  <input type="password" class="form-control"  required id="contraseña" aria-describedby="basic-addon3" ng-model="contrasena" placeholder="contraseña">
+</div>
+
+      
+
+
+<md-input-container md-no-float class="md-block">
+  <md-button  class="md-warn md-raised md-hue-2 botonentrar"  type="submit" flex>Entrar</md-button>
+  </md-input-container>
+
+</form>
+
+{{respuesta}}
+</div>
+<span >¿Olviadasddó su contraseña?</span>
+
+
+
+
+ 
+    <script src="/javascripts/angular.js"></script>
+    <script src="/javascripts/angular-route.min.js"></script>
+    <script src="/javascripts/angular-animate.js"></script>
+    <script src="/javascripts/angular-aria.min.js"></script>
+    <script src="/javascripts/angular-material/angular-material.min.js"></script>
+    <script src="/javascripts/app.js"></script>
+ 
+<script>
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</script>
+
+  </body>
+</html>

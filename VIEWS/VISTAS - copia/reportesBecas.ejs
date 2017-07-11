@@ -1,0 +1,39 @@
+<div ng-controller="reportesBecas">
+<md-toolbar>
+
+    <div layout="row">
+    <h3>
+
+            <md-button class="md-warn md-raised md-hue-2" href="#reportes/becas">Becas</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#reportes/comedor" >Comedor</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#reportes/ayudantias" >Ayudantias</md-button>
+             <md-button class="md-warn md-raised md-hue-2"href="#reportes/preparadurias" >Preparadurias</md-button>
+        
+          </h3>
+
+          <div flex class="tituloBeneficioOpciones"><h1>Reportes</h1></div>
+        </div>
+   </md-toolbar>
+<h1 class="tituloinfo">Reportes Becas</h1>
+<hr>
+
+<select ng-model="beneficio" class="form-control">
+  
+  <option value="Todos">Todos</option>
+  <option value="Social Critica">Social Critica</option>
+  <option value="Academica">Academica</option>
+  <option value="Deporte">Deporte</option>
+  <option value="Discapacidad">Discapacidad</option>
+</select>
+
+
+
+<div class="tituloinfo">
+  <button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+  <button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+
+
+
+</div>

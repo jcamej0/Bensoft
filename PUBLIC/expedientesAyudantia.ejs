@@ -1,0 +1,69 @@
+<div ng-controller="expedienteayudantia">
+
+
+    <md-toolbar>
+
+        <div layout="row">
+            <h3>
+                <md-button  ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#expedientes">Social Critica</md-button>
+                <md-button class="md-warn md-raised md-hue-2" href="#expediente/academica">Academica</md-button>
+                <md-button class="md-warn md-raised md-hue-2"href="#expediente/deporte" >Deporte</md-button>
+                <md-button class="md-warn md-raised md-hue-2"href="#expediente/discapacidad" >Discapacidad</md-button>
+                <md-button class="md-warn md-raised md-hue-2"href="#expediente/comedor" >Comedor</md-button>
+                <md-button class="md-warn md-raised md-hue-2"href="#expediente/preparadurias" >Preparadurias</md-button>
+                <md-button class="md-warn md-raised md-hue-2"href="#expediente/ayudantias" >Ayudantias</md-button>
+        
+            </h3>
+
+            <div flex class="tituloBeneficioOpciones"><h1>Expedientes</h1></div>
+        </div>
+    </md-toolbar>
+
+
+
+
+
+<h1 class="tituloinfo">Expedientes Ayudantia</h1>
+
+<div display="row" flex="20" class="has-success">
+<input type="text" ng-model="search" placeholder="Buscar por: Nombre,Cedula,Apellido" class="form-control" > 
+</div>
+  Total ex-beneficiaros  {{exbeneficiarios.length}}
+
+  <table class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Cedula</th>
+                                    <th>PNF</th>
+                                    <th>Beneficio</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="exbeneficiarios in exbeneficiarios|filter:search|itemsPerPage: 10 : 'skillsPaginationx11' track by $index" pagination-id="skillsPaginationx11">
+
+                                    
+                                    <td>{{exbeneficiarios.nombres}}</td>
+                                    </a>
+                                    <td>{{exbeneficiarios.apellidos}}</td>
+                                    <td>{{exbeneficiarios.tipocedula+'-'+exbeneficiarios.cedula}}</td>
+                                    <td>{{exbeneficiarios.pnf}}</td>
+                                    <td>{{exbeneficiarios.beneficio}}</td>
+                                    <td style="width:10%;"><md-button class="btn btn-primary" href='#expedientesInfoAyudantia/consultar/{{exbeneficiarios.cedula}}' ><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>Consultar</md-button>
+
+ 
+                                    
+								
+                                
+
+                            </tbody>
+                        </table> 
+                    </div>
+
+
+
+    
+
+</div>

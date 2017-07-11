@@ -1,0 +1,65 @@
+
+<div ng-controller="consultaSocialCritica">
+<md-toolbar>
+
+ <div layout="row">
+      <h3>
+        <md-button class="md-warn md-raised md-hue-2" href="#socialcritica/registro">Registrar</md-button>
+        <md-button class="md-warn md-raised md-hue-2" href="#socialcritica/consultar">Consultar</md-button>
+        <md-button class="md-warn md-raised md-hue-2"href="#socialcritica/modificar" >Estadisticas</md-button>
+        
+      </h3>
+
+      <div flex class="tituloBeneficioOpciones"><h1>Beca Ayuda Social Critica</h1></div>
+      </div>
+    </md-toolbar>
+
+
+
+
+
+
+<md-content>
+<h1 class="tituloinfo">Modificacion</h1>
+
+<div display="row" flex="20" class="has-success">
+<input type="text" ng-model="search" placeholder="Buscar por: Nombre,Cedula,Apellido" class="form-control" > 
+</div>
+  Total beneficiaros {{beneficiarios.length}}
+
+  <table class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Cedula</th>
+                                    <th>PNF</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="beneficiarios in beneficiarios|filter:search|itemsPerPage:4">
+
+                                    
+                                    <td>{{beneficiarios.nombres}}</td>
+                                    </a>
+                                    <td>{{beneficiarios.apellidos}}</td>
+                                    <td>{{beneficiarios.cedula}}</td>
+                                    <td>{{beneficiarios.pnf}}</td>
+                                    <td><md-button class="md-warn md-raised" href='#beneficiado/modificar/{{beneficiarios.cedula}}' >Consultar</md-button></td>
+                                    
+								
+                                
+
+                            </tbody>
+                        </table> 
+                    </div>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+
+</md-content>
+
+</div>

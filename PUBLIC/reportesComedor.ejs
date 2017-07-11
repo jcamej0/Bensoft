@@ -1,0 +1,40 @@
+<div ng-controller="comedorReporte">
+<md-toolbar>
+
+    <div layout="row">
+    <h3>
+
+            <md-button class="md-warn md-raised md-hue-2" href="#reportes/becas">Becas</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#reportes/comedor" >Comedor</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#reportes/ayudantias" >Ayudantias</md-button>
+             <md-button class="md-warn md-raised md-hue-2"href="#reportes/preparadurias" >Preparadurias</md-button>
+        
+          </h3>
+
+          <div flex class="tituloBeneficioOpciones"><h1>Reportes</h1></div>
+        </div>
+   </md-toolbar>
+
+<h1 class="tituloinfo">Reportes Comedor</h1>
+<hr>
+<div class="tituloinfo">
+
+<select  class="form-control" ng-change="cambio(comedor)" ng-model="comedor">
+  
+  <option   value="Todos" selected>Todos</option>
+  <option value="Daca">Daca</option>
+  <option value="Federación">Federación</option>
+  <option value="Camila">Camila</option>
+  <option value="Democracia">Democracia</option>
+
+</select>
+
+
+  <button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+  <button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+
+
+
+</div>

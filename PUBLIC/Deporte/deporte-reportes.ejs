@@ -1,0 +1,27 @@
+<div ng-controller="deporteReporte">
+
+	<md-toolbar>
+
+ 		<div layout="row">
+      		<h3>
+        		<md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#deporte/registro">Registrar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2" href="#deporte/consultar">Consultar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#deporte/estadisticas" >Estadísticas</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#deporte/reportes" >Reportes</md-button>
+        
+      		</h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Beca Deporte</h1></div>
+      	</div>
+    </md-toolbar>
+
+<h1 class="tituloinfo">Reportes y planillas Beca Deporte</h1>
+<hr>
+
+<div class="tituloinfo">
+	<button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+	<button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+	
+</div>

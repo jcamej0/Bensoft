@@ -1,0 +1,81 @@
+ <div ng-controller="usuarioRegistro" ng-hide="nivel != 3">
+
+  <div >
+ <md-toolbar ng-hide="nivel != 1 && nivel != 3">
+
+ <div layout="row">
+      <h3>
+        <md-button   class="md-warn md-raised md-hue-2" href="#pcontrol/registro">Registrar Usuario</md-button>
+        <md-button  class="md-warn md-raised md-hue-2" href="#pcontrol/consultar">Consultar Usuarios</md-button>
+        <md-button  class="md-warn md-raised md-hue-2"href="#pcontrol/bdatos" >Auditar</md-button>
+        <md-button  class="md-warn md-raised md-hue-2"href="#pcontrol/bdatos" >Base de datos</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/auditoria" >Auditoria</md-button>
+        
+        
+      </h3>
+
+      <div flex class="tituloBeneficioOpciones"><h1>Panel de Control</h1></div>
+      </div>
+    </md-toolbar>
+
+
+<h1 class="tituloinfo">Registro de usuario</h1>
+    <div class="registrousuario">
+		
+		{{formulario.nombre}}
+		{{formulario.usuario}}
+		{{formulario.contrasena}}
+<label for="nombre">Nombre y apellido</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="nombre" aria-describedby="basic-addon3" ng-model="formulario.nombre">
+</div>
+<br>
+<label for="usuario">Nombre de usuario</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="usuario" aria-describedby="basic-addon3" ng-model="formulario.usuario">
+</div>
+
+
+<br>
+<label for="contraseña">Contraseña</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+	<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+   </span>
+  <input type="password" class="form-control" id="contraseña" aria-describedby="basic-addon3" ng-model="formulario.contrasena">
+</div>
+
+
+<label for="tipo">Tipo de usuario</label>
+<br>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> Administrador
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"> Editor
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3"> Consultor
+</label>
+
+<br>
+<br>
+<button type="button" class="btn btn-primary btn-lg btn-block">Registrar</button>
+
+	</div>
+
+
+
+
+
+
+
+</div>
+
+</div>

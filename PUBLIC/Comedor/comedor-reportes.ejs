@@ -1,0 +1,39 @@
+<div ng-controller="comedorReporte" >
+
+	<md-toolbar>
+
+ 		<div layout="row">
+       <h3>
+          <md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#comedor/registro">Registrar</md-button>
+            <md-button class="md-warn md-raised md-hue-2" href="#comedor/consultar">Consultar</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#comedor/estadisticas" >Estadísticas</md-button>
+            <md-button class="md-warn md-raised md-hue-2"href="#comedor/reportes" >Reportes</md-button>
+        
+          </h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Beneficio Alimentario</h1></div>
+      	</div>
+    </md-toolbar>
+
+<h1 class="tituloinfo">Reportes y planillas Beca Comedor</h1>
+<hr>
+
+<div class="tituloinfo">
+
+<select  class="form-control" ng-change="cambio(comedor)" ng-model="comedor">
+  
+  <option   value="Todos" selected>Todos</option>
+  <option value="Daca">Daca</option>
+  <option value="Federación">Federación</option>
+  <option value="Camila">Camila</option>
+  <option value="Democracia">Democracia</option>
+
+</select>
+
+
+	<button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+	<button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+	
+</div>

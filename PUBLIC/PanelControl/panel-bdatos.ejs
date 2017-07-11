@@ -1,0 +1,182 @@
+ <div ng-controller="operacionesBaseDatos" ng-hide="nivel != 3">
+ <md-toolbar>
+
+ <div layout="row">
+   <h3>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/registro">Registrar Usuario</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/consultar">Consultar Usuarios</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2"href="#pcontrol/bdatos" >Base de datos</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/auditoria" >Auditoria</md-button>
+        
+      </h3>
+      </h3>
+
+      <div flex class="tituloBeneficioOpciones"><h1>Panel de Control</h1></div>
+      </div>
+    </md-toolbar>
+
+
+ <md-content  ng-hide="nivel != 1 && nivel != 3" class="contenido" flex>
+ <h1 class="tituloinfo" >Operaciones Base de Datos</h1>
+ <md-divider></md-divider>
+ <br>
+    
+    <div layout="row">
+   
+
+                    <div flex>
+                        <md-card class="md-whiteframe-15dp">
+                            
+                           			 <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1 style="font-family: serif"  style="font-family: serif">Condicion Social Critica</h1></md-card-title-text>
+                                <md-divider></md-divider>
+                            <md-card-action layout="column">
+                                <md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Social Critica')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Social Critica')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="restaurartodo('Social Critica')">Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Social Critica')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+                    </div>
+
+
+
+ <div flex>
+                        <md-card class="md-whiteframe-15dp">
+                            
+                           			 <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1 style="font-family: serif" >Academica</h1></md-card-title-text>
+                                <md-divider></md-divider>
+                            <md-card-action layout="column">
+ <md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Academica')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Academica')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" >Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Academica')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+                    </div>
+
+
+
+                     <div flex>
+                        <md-card class="md-whiteframe-15dp">
+                       
+                           			 <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1 style="font-family: serif" >Deporte</h1></md-card-title-text>
+                                <md-divider></md-divider>
+                            <md-card-action layout="column">
+ 								<md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Deporte')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Deporte')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" >Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Deporte')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+                    </div>
+
+  </div>
+
+
+
+
+  <div layout="row">
+   
+
+                    <div flex>
+                        <md-card class="md-whiteframe-15dp">
+                           			 <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1 style="font-family: serif">Discapacidad</h1></md-card-title-text>
+                                <md-divider></md-divider>
+                            <md-card-action layout="column">
+ 								<md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Discapacidad')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Discapacidad')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="restaurartodo('Discapacidad')">Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Discapacidad')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+                    </div>
+
+
+
+ <div flex>
+                        <md-card class="md-whiteframe-15dp">
+
+                           			 <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1 style="font-family: serif">Comedor</h1></md-card-title-text>
+                                <md-divider></md-divider>
+                              <md-card-action layout="column">
+ 								               <md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Comedor')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Comedor')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="restaurartodo('Comedor')" >Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Comedor')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+                    </div>
+
+        <div flex>
+                        <md-card class="md-whiteframe-15dp">
+                            
+                                     <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1  style="font-family: serif">Ayudantias</h1>
+                                <md-divider></md-divider>
+                                </md-card-title-text>
+                              <md-card-action layout="column">
+                                <md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Ayudantia')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Ayudantia')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="restaurartodo('Ayudantia')" >Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Ayudantia')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+                  </div>
+
+
+
+                  <md-card class="md-whiteframe-15dp">
+                            
+                                     <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1  style="font-family: serif">Preparadurias</h1>
+                                <md-divider></md-divider>
+                                </md-card-title-text>
+                              <md-card-action layout="column">
+                                <md-button class="md-raised md-primary" ng-click="eliminarxbeneficio('Preparaduria')">Eliminar Todos(Activos)</md-button>
+                                <md-button class="md-raised md-primary" ng-click="obtenertodo('Preparaduria')" >Mover activos a inactivos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="restaurartodo('Preparaduria')" >Mover inactivos a Activos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente('Preparaduria')">Eliminar todos los inactivos</md-button>
+                            </md-card-action>
+                        </md-card>
+
+                     
+
+  </div>
+
+
+
+        <div flex>
+                        <md-card class="md-whiteframe-15dp">
+                            
+                                     <md-divider></md-divider>
+                            <md-card-title-text>
+                                <h1 style="font-family: serif">Configuracion global</h1>
+                                <md-divider></md-divider>
+                                </md-card-title-text>
+                            <md-card-action layout="column">
+                            <md-button class="md-raised md-primary" ng-click="respaldo()">RESPALDAR BASE DE DATOS</md-button>
+                                 <md-button class="md-raised md-primary" ng-click="eliminarxbeneficio()">Eliminar Todos los registros activos</md-button>
+                                <md-button class="md-raised md-primary"  ng-click="obtenertodo()">Mover todos los registros activos </md-button>
+                                <md-button class="md-raised md-primary"  ng-click="restaurartodo()">Restaurar todos los registros inactivos</md-button>
+                                <md-button class="md-raised md-primary" ng-click="eliminartodoexpediente()">Eliminar todos los inactivos</md-button>
+
+                            </md-card-action>
+                        </md-card>
+                  </div>
+
+
+   </md-content>
+
+   </div>

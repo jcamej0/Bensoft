@@ -1,0 +1,27 @@
+<div ng-controller="socialReporte">
+
+	<md-toolbar>
+
+ 		<div layout="row">
+      		<h3>
+        		<md-button  ng-hide="nivel != 1 && nivel != 3"  class="md-warn md-raised md-hue-2" href="#socialcritica/registro">Registrar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2" href="#socialcritica/consultar">Consultar</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#socialcritica/estadisticas" >Estadísticas</md-button>
+        		<md-button class="md-warn md-raised md-hue-2"href="#socialcritica/reportes" >Reportes</md-button>
+        
+      		</h3>
+
+      		<div flex class="tituloBeneficioOpciones"><h1>Beca Condicion Social </h1></div>
+      	</div>
+    </md-toolbar>
+
+<h1 class="tituloinfo">Reportes y planillas Beca Social </h1>
+<hr>
+
+<div class="tituloinfo">
+	<button  class="btn btn-success btn-lg"ng-click="openPdf()">Abrir PDF</button>
+    <button  class=" btn btn-success btn-lg"ng-click="downloadPdf()">Descargar PDF</button>
+	<button  class=" btn btn-success btn-lg"ng-click="printPdf()">Imprimir PDF</button>
+</div>
+	
+</div>
