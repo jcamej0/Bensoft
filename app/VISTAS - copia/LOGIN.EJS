@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html ng-cloack ng-app="logueo">
+  <head>
+    <link rel="stylesheet" href="/javascripts/angular-material/angular-material.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <script src="/javascripts/jquery.min.js"></script>
+        <script src="/javascripts/bootstrap.min.js"></script>
+  </head>
+<body ng-controller="login">
+
+<md-toolbar>
+<div layout="row" class="cabezera">
+<h1>Sistema de Gestión de Beneficios Estudiantiles</h1>
+<div flex>
+<img src="/images/logodepartamento.png" alt="" height="100" width="160" class="logos">
+<img src="/images/logoinstitucion.png" alt="" height="100" width="100" class="logos">
+</div>    
+</div> 
+
+   </md-toolbar>
+
+
+<div class="formlogin">
+
+
+<h1>ACCESO</h1>
+
+
+
+
+<form name="form" ng-submit="xxx()">
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+   </span>
+  <input type="text" class="form-control" id="nombre"  required aria-describedby="basic-addon3" ng-model="usuario" placeholder="nombre de usuario">
+</div>
+       
+
+       
+  <br>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">
+  <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+   </span>
+  <input type="password" class="form-control"  required id="contraseña" aria-describedby="basic-addon3" ng-model="contrasena" placeholder="contraseña">
+</div>
+
+      
+
+
+<md-input-container md-no-float class="md-block">
+  <md-button  class="md-warn md-raised md-hue-2 botonentrar"  type="submit" flex>Entrar</md-button>
+  </md-input-container>
+
+</form>
+
+<button type="button" ng-show="bloqueado" class="btn btn-danger" >RESTAURAR</button>
+<div class="olvidoContrasena"><span  id="botonRestaurar" >¿Olvidó su contraseña?</span></div>
+</div>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span>¿Olvidó su contraseña?</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form  form name="form" role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nombre de usuario:</label>
+              <input type="text" class="form-control" ng-model="usuario" value="{{usuario}}" ng-disabled="desactivar">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Respuesta secreta:</label>
+              <input type="text" class="form-control" id="psw" placeholder="Introduzca su respuesta secreta" ng-model="respuesta" ng-disabled="desactivar">
+            </div>
+       
+            <div class="form-group" ng-show="respuestaCorrecta">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Nueva contraseña:</label>
+              <input type="text" pattern="(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" class="form-control" id="psw" placeholder="Introduzca su nueva contraseña" ng-model="contrasenaNueva">
+              <div class="error-clave" ng-show="form.password.$invalid && !form.password.$pristine">
+  Contraseña debe tener almenos 8 caracteres y una mayuscula
+</div>
+            </div>
+   
+
+            <div class="checkbox">
+              <button class="btn btn-success btn-block" ng-click="consultarRespuesta()" ng-if="!respuestaCorrecta">Consultar respuesta</button>
+            </div>
+              <button ng-show="desactivar" type="submit" class="btn btn-success btn-block" ng-click="cambiarContrasena()"><span class="glyphicon glyphicon-off" ></span> Cambiar contraseña</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div>
+
+
+
+<script>
+  $(document).ready(function(){
+
+    $("#botonRestaurar").click(function(){
+  
+      $("#myModal").modal();
+    })
+
+  })
+
+</script>
+
+  <style>
+  .modal-header, h4, .close {
+      background-color: #5cb85c;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  </style>
+
+
+    <script src="/javascripts/angular.min.js"></script>
+    <script src="/javascripts/angular-route.js"></script>
+    <script src="/javascripts/angular-animate.js"></script>
+    <script src="/javascripts/angular-aria.js"></script>
+    <script src="/javascripts/angular-material/angular-material.js"></script>
+    <script src="/javascripts/app.js"></script>
+ 
+
+
+  </body>
+</html>

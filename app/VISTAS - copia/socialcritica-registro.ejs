@@ -1,0 +1,319 @@
+<div ng-controller="socialRegistro">
+
+ <md-toolbar>
+
+ <div layout="row">
+      <h3>
+        <md-button class="md-warn md-raised md-hue-2" href="#socialcritica/registro">Registrar</md-button>
+        <md-button class="md-warn md-raised md-hue-2" href="#socialcritica/consultar">Consultar</md-button>
+        <md-button class="md-warn md-raised md-hue-2"href="#socialcritica/modificar" >Estadisticas</md-button>
+        
+      </h3>
+
+      <div flex class="tituloBeneficioOpciones"><h1>Beca Ayuda Social Critica</h1></div>
+      </div>
+    </md-toolbar>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<md-content flex>
+
+<form name="form" ng-submit="agregarBeneficiarios()" novalidate>
+<div layout="column">
+
+<h1 class="tituloinfo">Registro Beca Social Critica</h1>
+<hr>
+
+   <div layout="row" >
+
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.nombre.$invalid && !form.nombre.$pristine ,
+  'has-success' : form.nombre.$valid && !form.nombre.$pristine
+  } ">
+    <label for="exampleInputEmail1">Nombres</label>
+
+    <input type="text" name="nombre" class="form-control" placeholder="Nombre" ng-model="formulario.nombre" required>
+    <small class="text-muted">Campo obligatorio.</small>
+    <p ng-show="form.nombre.$invalid && !form.nombre.$pristine" class="help-block">Introduzca un nombre</p>
+  </fieldset>
+
+   <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.apellido.$invalid && !form.apellido.$pristine ,
+  'has-success' : form.apellido.$valid && !form.apellido.$pristine
+  } ">
+    <label for="exampleInputEmail1">Apellidos</label>
+    <input type="text" name="apellido" class="form-control" placeholder="apellido" ng-model="formulario.apellido" required>
+    <small class="text-muted">Campo obligatorio.</small>
+    <p ng-show="form.apellido.$invalid && !form.apellido.$pristine" class="help-block">Agregue un apellido</p>
+  </fieldset>
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.cedula.$invalid && !form.cedula.$pristine ,
+  'has-success' : form.cedula.$valid && !form.cedula.$pristine
+  } ">
+    <label for="exampleInputEmail1">Cedula</label>
+    <input type="text" name="cedula" class="form-control" placeholder="Cedula" ng-model="formulario.cedula" numbers-only required>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.codigo.$invalid && !form.codigo.$pristine ,
+  'has-success' : form.codigo.$valid && !form.codigo.$pristine
+  } ">
+    <label for="exampleInputEmail1">Codigo</label>
+
+    <input type="text" name="codigo" class="form-control" placeholder="Codigo" ng-model="formulario.codigo" numbers-only required>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+</div>
+
+
+
+
+
+   
+
+
+
+
+
+
+<div layout="row" >
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.pnf.$invalid && !form.pnf.$pristine ,
+  'has-success' : form.pnf.$valid && !form.pnf.$pristine
+  } ">
+    <label for="exampleInputEmail1">PNF</label>
+    
+      <select  name="pnf" class="form-control" ng-model="formulario.pnf"  required>
+         
+         <option  ng-repeat="pnf in PNF" >{{pnf.nombre}}</option>
+      </select>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+
+   <div layout="row" flex='5'>
+      
+
+   </div>
+
+
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.trayecto.$invalid && !form.trayecto.$pristine ,
+  'has-success' : form.trayecto.$valid && !form.trayecto.$pristine
+  } ">
+    <label for="exampleInputEmail1">Trayecto</label>
+    
+      <select name="trayecto" class="form-control" ng-model="formulario.trayecto" required>
+         
+         <option ng-repeat="trayectos in trayecto">{{trayectos.nombre}}</option>
+      </select>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+   <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.trimestre.$invalid && !form.trimestre.$pristine ,
+  'has-success' : form.trimestre.$valid && !form.trimestre.$pristine
+  } ">
+    <label for="exampleInputEmail1">Trimestre</label>
+    
+      <select name="trimestre" class="form-control" ng-model="formulario.trimestre" required>
+         
+         <option ng-repeat="trimestres in trimestre">{{trimestres.trimestre}}</option>
+      </select>
+      <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.sexo.$invalid && !form.sexo.$pristine ,
+  'has-success' : form.sexo.$valid && !form.sexo.$pristine
+  } " >
+    <label for="exampleInputEmail1">Sexo</label>
+    
+      <select name="sexo" class="form-control" ng-model="formulario.sexo" required>
+         
+         <option ng-repeat="sexos in sexo">{{sexos.sexo}}</option>
+      </select>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+</div>
+
+
+
+
+<div layout="row" >
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.estado.$invalid && !form.estado.$pristine ,
+  'has-success' : form.estado.$valid && !form.estado.$pristine
+  } ">
+    <label for="estado">Estado Procedencia</label>
+    
+      <select  name="estado" class="form-control" ng-model="formulario.estado"  ng-change="cambiarMunicipio(formulario.estado)" required>
+         
+         <option    ng-repeat="estados in estado"  >{{estados.estado}}</option>
+      </select>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+   <div layout="row" flex='5'>
+      
+
+   </div>
+
+
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.municipio.$invalid && !form.municipio.$pristine ,
+  'has-success' : form.municipio.$valid && !form.municipio.$pristine
+  } ">
+    <label for="municipio">Municipio</label>
+    
+      <select name="municipio" class="form-control" ng-model="formulario.municipio" required>
+         
+         <option ng-repeat="municipios in municipio">{{municipios.municipio}}</option>
+      </select>
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+   <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.fecnac.$invalid && !form.fecnac.$pristine ,
+  'has-success' : form.fecnac.$valid && !form.fecnac.$pristine
+  } ">
+    <label for="fecnac">Fecha de Nacimiento</label>
+    
+      <input name="fecnac" type="date" class="form-control" ng-model="formulario.fecnac">
+      <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.direccion.$invalid && !form.direccion.$pristine ,
+  'has-success' : form.direccion.$valid && !form.direccion.$pristine
+  } " >
+    <label for="direccion">Direccion Actual</label>
+    
+      <input name="direccion" type="text" class="form-control" ng-model="formulario.direccion">
+    <small class="text-muted">Campo obligatorio.</small>
+  </fieldset>
+</div>
+
+<div layout="row" >
+
+
+
+
+  <fieldset class="form-group" flex='20'>
+    <label for="exampleInputEmail1">Telefono</label>
+    <input type="text" class="form-control" placeholder="Nombre" ng-model="formulario.telefono">
+    
+  </fieldset>
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20' ng-class="{'has-error' : form.correo.$invalid && !form.correo.$pristine ,
+  'has-success' : form.correo.$valid && !form.correo.$pristine
+  } ">
+    <label for="exampleInputEmail1">Correo</label>
+    <input type="email" name="correo" class="form-control" placeholder="Correo" ng-model="formulario.correo">
+    <p ng-show="form.correo.$invalid && !form.correo.$pristine" class="help-block">Introduzca un correo valido.</p>
+  </fieldset>
+
+
+  <div layout="row" flex='5'>
+      
+
+   </div>
+
+  <fieldset class="form-group" flex='20'>
+    <label for="exampleInputEmail1">Twitter</label>
+    <input type="text" class="form-control" placeholder="Nombre" ng-model="formulario.twitter">
+    
+  </fieldset>
+
+
+<div layout="row" flex='5'>
+      
+
+   </div>
+
+   <fieldset class="form-group" flex='20'>
+    <label for="exampleInputEmail1">Facebook</label>
+    <input type="text" class="form-control" placeholder="Nombre" ng-model="formulario.facebook">
+    
+  </fieldset>
+
+
+
+</div>
+
+
+
+
+
+
+
+     <fieldset class="form-group">
+    <label for="exampleTextarea">Informacion Adicional</label>
+    <textarea class="form-control" id="exampleTextarea" ng-model="formulario.adicional"></textarea>
+  </fieldset>
+
+
+
+
+
+</div>
+
+
+
+    <div flex class="tituloinfo"> 
+   <button type="submit" class="btn btn-success" ng-disabled="form.$invalid" flex="90">Registrar</button>
+   <button  class="btn btn-warning" ng-click="limpiar()" flex="40">Limpiar</button>
+    </div>
+
+
+
+</form>
+</md-content>
+
+
+</div>
