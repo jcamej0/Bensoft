@@ -66,8 +66,11 @@ app.use(cookieParser());
 app.use(session({ secret: 'secreto' }));
 app.use('/', routes);
 app.use('/users', users);
+var port = process.env.PORT || 8080;
+app.listen(port, function() { 
 
-app.listen(4000, function() {  });
+    console.log("HOLA COMO ESTAS")
+ });
 
 
 
