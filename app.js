@@ -21,7 +21,7 @@ var bitacora = require('./model/bitacora').Bitacora;
 
 var app = express();
 process.env.PWD = process.cwd();
-app.use(express.static(process.env.PWD +'/public'));
+app.use(express.static(process.env.PWD +'/PUBLIC'));
 
 
 var uristring =
