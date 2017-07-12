@@ -1,0 +1,225 @@
+<div ng-controller="auditoria" ng-hide="nivel != 3">
+<div flex>
+ <md-toolbar>
+
+ <div layout="row">
+      <h3>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/registro">Registrar Usuario</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/consultar">Consultar Usuarios</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/bdatos" >Base de datos</md-button>
+         <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/auditoria" >Auditoria</md-button>
+        
+        
+      </h3>
+</div>
+   </md-toolbar>
+
+   <md-content class="md-padding" layout="column">
+    <md-tabs md-dynamic-height class="md-accent">
+      <md-tab id="tab1">
+        <md-tab-label>Accesos</md-tab-label>
+        <md-tab-body>
+        <h2>LISTA DE ACCESOS</h2>
+    	<div layout="row">
+    	<md-select ng-model="nombreElegido" >
+    		<md-option ng-repeat="usuario in usuarios" value="{{usuario.id}}">{{usuario.nombre}}</md-option>
+    	</md-select>
+    	<md-datepicker ng-model="fechaElegida" name="" id=""></md-datepicker>
+    	<md-button ng-click="buscar()">Consultar</md-button>
+
+    	</div>
+
+    	  <div class="resultadosAuditoria">
+
+  <table class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+    <thead>
+    	<tr >
+    		<th >Usuario</th>
+    		<th>Fecha</th>
+    		<th>Hora</th>
+    		<th >IP</th>
+		</tr>
+	</thead>
+
+	    <tbody >
+      <tr  dir-paginate="total in total|filter:search|itemsPerPage:5 : 'skillsPaginationx2' track by $index" pagination-id="skillsPaginationx2"">
+        <td >{{total.nombres}}</td>
+        <td> {{total.fecha|date:'dd-MM-yyyy' }}	</td>
+        <td >{{total.hora}}</td>
+        <td> {{total.ip}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" 
+       pagination-id="skillsPaginationx2">
+    </dir-pagination-controls>
+
+  </div>
+
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab2">
+        <md-tab-label>Modificaciones</md-tab-label>
+        <md-tab-body>
+          <h1>LISTA DE MODIFICACIONES</h1>
+	
+		  <table class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+    <thead>
+    	<tr >
+    		<th >Usuario edito</th>
+    		<th>Usuario editado</th>
+    		<th>Hora</th>
+    		<th>Fecha</th>
+    		<th>Campos editados</th>
+		</tr>
+	</thead>
+
+	    <tbody >
+      <tr  dir-paginate="modificaciones in modificaciones|filter:search|itemsPerPage:5 : 'skillsPaginationx1' track by $index" pagination-id="skillsPaginationx1"">
+
+        <td >{{modificaciones.usuario}}</td>
+        <td >{{modificaciones.beneficiario}}</td>
+        <td >{{modificaciones.hora}}</td>
+        <td> {{modificaciones.fecha|date:'dd-MM-yyyy' }}</td>
+        <td><md-button class="btn btn-danger" data-toggle="modal" data-nombre="{{modificaciones.beneficiario}}"  data-editados="{{modificaciones.modificaciones}}"  ng-click="cambiarEditados(modificaciones.modificaciones)" data-target="#verCampos"  ng-hide="nivel != 1 && nivel != 3" ><span class="glyphicon glyphicon-cog" aria-hidden="true" ></span> VER</md-button>
+
+ 	
+<script>
+  
+$('#verCampos').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var campos = button.data('editados');
+  var nombre = button.data('nombre');
+  var index = button.data('index');
+  editados = campos;
+  var modal = $(this);
+  modal.find('.modal-title').text('Campos editados de ' + nombre)
+})
+
+</script>
+  <div class="modal fade"  id="verCampos" tabindex="1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body" style="text-align: center">
+		<div ng-repeat="editadosx in editadosx">{{editadosx}}</div>
+		
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</td>
+      </tr>
+    </tbody>
+  </table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true"
+       pagination-id="skillsPaginationx1" >
+    </dir-pagination-controls>
+
+
+        </md-tab-body>
+        </md-tab>
+
+        <md-tab id="tab3">
+        <md-tab-label>Bitacora</md-tab-label>
+        <md-tab-body>
+          <h1>LISTA DE OPERACIONES </h1>
+      <div layout="row">
+      <div layour="column">
+        
+<span>Usuario</span>
+  
+      <md-select ng-model="nombreElegidoBitacora" >
+
+        <md-option ng-repeat="usuario in usuarios" value="{{usuario.id}}">{{usuario.nombre}}</md-option>
+      </md-select>
+      </div>
+        
+      <div layour="column">
+    <p>Fecha</p>
+          <md-button class="md-raised md-warn" ng-click="pick($event, true)">Seleccione la fecha</md-button>
+ 
+        </div>
+      <md-button ng-click="consultarBitacora()">Consultar</md-button>
+
+  </div>
+    
+    
+        <div class="resultadosAuditoria">
+
+  <table class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+    <thead>
+      <tr >
+        <th >Usuario</th>
+        <th>Acción</th>
+        <th>Beneficiario</th>
+        <th>Cedula</th>
+        <th>Beneficio</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th >Ip</th>
+    </tr>
+  </thead>
+
+      <tbody >
+      <tr  dir-paginate="bitacora in bitacora|filter:search|itemsPerPage:5 : 'skillsPaginationx3' track by $index" pagination-id="skillsPaginationx3"">
+        <td >{{bitacora.usuario}}</td>
+        <td> {{bitacora.modificacion}}</td>
+        <td> {{bitacora.beneficiario}}</td>.
+        <td> {{bitacora.cedula}}</td>
+        <td> {{bitacora.beneficio}}</td>
+        <td> {{bitacora.fecha|date:'dd-MM-yyyy' }} </td>
+        <td >{{bitacora.hora}}</td>
+        <td> {{bitacora.ip}}</td>
+        
+        
+        
+        
+
+      </tr>
+    </tbody>
+  </table>
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" 
+       pagination-id="skillsPaginationx3">
+    </dir-pagination-controls>
+
+  </div>
+
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+
+
+
+
+
+
+  </md-content>
+
+
+                    <script>
+                    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+                    </script>
+
+</div>

@@ -1,0 +1,200 @@
+<div ng-controller="consultaUsuariosPcontrol" ng-hide="nivel != 3">
+
+	<md-toolbar ng-hide="nivel != 1 && nivel != 3">
+
+ 		<div layout="row">
+   <h3>
+        <md-button class="md-warn md-raised md-hue-2" href="#pcontrol/registro">Registrar Usuario</md-button>
+        <md-button class="md-warn md-raised md-hue-2" href="#pcontrol/consultar">Consultar Usuarios</md-button>
+        <md-button class="md-warn md-raised md-hue-2"href="#pcontrol/bdatos" >Base de datos</md-button>
+        <md-button ng-hide="nivel != 1 && nivel != 3" class="md-warn md-raised md-hue-2" href="#pcontrol/auditoria" >Auditoria</md-button>
+        
+        
+      </h3>
+
+     	 <div flex class="tituloBeneficioOpciones"><h1>Panel de Control</h1></div>
+      	</div>
+    </md-toolbar>
+
+
+
+	
+
+	<table  ng-hide="nivel != 1 && nivel != 3" class="table table-striped table-hover table-condensed  table-bordered agrandarLetra">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Usuario</th>
+                                    <th>Tipo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="usuarios in usuarios|filter:search|itemsPerPage:4">
+
+                                    <td>{{usuarios.nombre}}</td>
+                                    </a>
+                                    <td>{{usuarios.user}}</td>
+                                    <td>{{usuarios.tipo}}</td>
+
+										<td>
+                                   <md-button class="btn btn-success" data-toggle="modal"  data-nombre="{{usuarios.nombre}}" data-tipo="{{usuarios.tipo}}" data-pass="{{usuarios.contrasena}}"  data-id="{{usuarios._id}}" data-target="#myModal" 
+                                     ng-hide="nivel != 1 && nivel != 3" ><span class="glyphicon glyphicon-cog" aria-hidden="true" ></span> Modificar</md-button>
+
+                                      <md-button class="btn btn-danger"  data-toggle="modal"  data-ide="{{usuarios._id}}" data-target="#mensajeEliminar" 
+                                     ng-hide="nivel != 1 && nivel != 3" ><span class="glyphicon glyphicon-trash" aria-hidden="true" ></span> Eliminar</md-button>
+
+
+                                      <md-button class="btn btn-danger"  ng-show='{{usuarios.bloqueado}}||{{usuarios.intentosRespuesta >= 3}}' data-toggle="modal"  data-ide="{{usuarios._id}}" data-target="#mensajeDesbloquear" 
+                                      ><span class="glyphicon glyphicon-lock" aria-hidden="true" ></span> Desbloquear</md-button>
+                                     </td>
+
+
+										<td>
+                                  
+                                     </td>
+                                           
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"></h4>
+      </div>
+      <div class="modal-body">
+
+        <label for="pass">Contraseña</label>
+        <input type="password" class="pass form-control" id="pass" ng-model="usuario.pass" required>
+        <input type="password" class="id form-control" id="id" ng-model="usuario.ide" ng-hide="true">
+        <label for="tipo">Tipo de usuario</label>
+
+<br>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="Administrador" class="Administrador" value="3" ng-model="usuario.tipo"> Administrador
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="Editor" value="1" ng-model="usuario.tipo"> Editor
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="Consultor" value="0" ng-model="usuario.tipo"> Consultor
+</label>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary"  data-dismiss="modal" ng-click="actualizarUsuario()">Actualizar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade"  id="mensajeEliminar" tabindex="1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Eliminar</h4>
+      </div>
+      <div class="modal-body">
+      <input type="password" class="id form-control" id="id" ng-model="usuarioeliminar.ide" ng-hide="true">
+        <p>¿Esta seguro que desea eliminar a este usuario?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click = "eliminar(usuarioeliminar.ide)" >Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <div class="modal fade"  id="mensajeDesbloquear" tabindex="1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Desbloqueo</h4>
+      </div>
+      <div class="modal-body">
+      <input type="password" class="id form-control" id="id" ng-model="usuarioeliminar.ide" ng-hide="true">
+        <button   type="button" class="btn btn-primary" data-dismiss="modal" ng-click = "desbloquear(usuarioeliminar.ide)" >Desbloquear usuario</button></div>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click = "desbloquearRespuesta(usuarioeliminar.ide)" >Desbloquear intentos de respuesta</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+                           
+                                    </td>
+                                    </tr>
+								
+                                
+
+                            </tbody>
+                        </table> 
+
+ </div>
+
+<script>
+	
+$('#mensajeEliminar').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var ide = button.data('ide');
+  var modal = $(this)
+   modal.find('.modal-body input.id').val(ide).trigger('input');
+
+})
+
+$('#mensajeDesbloquear').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var ide = button.data('ide');
+  var modal = $(this)
+   modal.find('.modal-body input.id').val(ide).trigger('input');
+
+})
+
+$('#myModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget)
+  var nombre = button.data('nombre') 
+  var tipo = button.data('tipo')   
+  var pass = button.data('pass')
+  var id = button.data('id')
+  var modal = $(this)
+ modal.find('.modal-title').text('Modificar ' + nombre)
+ modal.find('.modal-body input.pass').val(pass).trigger('input');
+ modal.find('.modal-body input.id').val(id).trigger('input');
+ modal.find('.modal-body input#'+tipo).prop("checked", true).trigger('input');;
+
+})
+</script>
+
+
+
+
+
+
+
+<div ng-hide="nivel != 1 && nivel != 3">
+<dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+
+
+ </div>   
+
+
+
+
+</div>
